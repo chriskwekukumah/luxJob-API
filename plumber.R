@@ -5,9 +5,10 @@ library(luxJob)
 #* @apiDescription API to query jobs, skills, companies and more
 
 #* Get all skills
+#* @param limit Maximum number of results (default 100)
 #* @get /skills
-function() {
-  get_skills()
+function(limit = 100) {
+  get_skills(limit = as.numeric(limit))
 }
 
 #* Get skill by ID
@@ -18,9 +19,10 @@ function(skill_id) {
 }
 
 #* Get all companies
+#* @param limit Maximum number of results (default 100)
 #* @get /companies
-function() {
-  get_companies()
+function(limit = 100) {
+  get_companies(limit = as.numeric(limit))
 }
 
 #* Get company by ID
@@ -31,9 +33,13 @@ function(company_id) {
 }
 
 #* Get all vacancies
+#* @param skill Filter by skill (optional)
+#* @param company Filter by company (optional)
+#* @param canton Filter by canton (optional)
+#* @param limit Maximum number of results (default 100)
 #* @get /vacancies
-function() {
-  get_vacancies()
+function(skill = NULL, company = NULL, canton = NULL, limit = 100) {
+  get_vacancies(skill = skill, company = company, canton = canton, limit = as.numeric(limit))
 }
 
 #* Get vacancy by ID
@@ -44,9 +50,10 @@ function(vacancy_id) {
 }
 
 #* Get all learning tracks
+#* @param skill_id Filter by skill ID (optional)
 #* @get /learning_tracks
-function() {
-  get_learning_tracks()
+function(skill_id = NULL) {
+  get_learning_tracks(skill_id = skill_id)
 }
 
 #* Get learning track by ID
@@ -57,9 +64,10 @@ function(track_id) {
 }
 
 #* Get all books
+#* @param skill Filter by skill (optional)
 #* @get /books
-function() {
-  get_books()
+function(skill = NULL) {
+  get_books(skill = skill)
 }
 
 #* Get book by ID
