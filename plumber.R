@@ -58,4 +58,30 @@ function(skill_id = NULL) {
 
 #* Get learning track by ID
 #* @param track_id The track ID
-#* @ge
+#* @get /learning_tracks/<track_id>
+function(track_id) {
+  get_learning_track_by_id(as.numeric(track_id))
+}
+
+#* Get all books
+#* @param skill Filter by skill (optional)
+#* @get /books
+function(skill = NULL) {
+  get_books(skill = skill)
+}
+
+#* Get book by ID
+#* @param book_id The book ID
+#* @get /books/<book_id>
+function(book_id) {
+  get_book_by_id(as.numeric(book_id))
+}
+
+#* Log a search
+#* @param user_id The user ID
+#* @param query The search query
+#* @param schema The schema (default: adem)
+#* @post /log_search
+function(user_id, query, schema = "adem") {
+  log_search(user_id = user_id, query = query, schema = schema)
+}
